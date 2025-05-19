@@ -1,4 +1,4 @@
-# Gohono Cloudflare
+# Hono Cloudflare Workers Boilerplate
 
 A clean architecture boilerplate for Hono on Cloudflare Workers with TDD and best practices.
 
@@ -49,8 +49,8 @@ src/
 1. Clone the repository:
 
 ```bash
-git clone <repository-url>
-cd gohono-cloudflare
+git clone https://github.com/lowkruc/hono-cloudflare-workers-boilerplate.git
+cd hono-cloudflare-workers-boilerplate
 ```
 
 2. Install dependencies:
