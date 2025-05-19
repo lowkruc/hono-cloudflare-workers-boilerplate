@@ -1,4 +1,4 @@
-# Gohono Cloudflare API Documentation
+# API Documentation
 
 This document provides detailed information about the API endpoints available in the Gohono Cloudflare boilerplate.
 
