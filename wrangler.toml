@@ -1,0 +1,67 @@
+name = "gohono-cloudflare"
+main = "src/infrastructure/worker.ts"
+compatibility_date = "2023-09-01"
+
+[vars]
+# Environment variables for your worker
+ENVIRONMENT = "production"
+LOG_LEVEL = "info"
+JWT_SECRET = "production-jwt-secret-change-this-in-cloudflare-dashboard"
+
+# D1 Database for production
+[[d1_databases]]
+binding = "DB"
+database_name = "gohono"
+database_id = "xxxxx-placeholder-xxxxx"
+migrations_dir = "src/infrastructure/database/migrations"
+
+# KV Namespace for caching
+[[kv_namespaces]]
+binding = "CACHE"
+id = "xxxxx-placeholder-xxxxx"
+preview_id = "xxxxx-placeholder-xxxxx"
+
+# Add development environment
+[env.dev]
+vars = { ENVIRONMENT = "development", LOG_LEVEL = "debug", JWT_SECRET = "dev-jwt-secret-for-local-development" }
+
+# D1 Database for development
+[[env.dev.d1_databases]]
+binding = "DB"
+database_name = "gohono_dev"
+database_id = "3c6fecbb-402a-4a12-8689-ecc4cf9ddf54"
+migrations_dir = "src/infrastructure/database/migrations"
+
+# KV Namespace for dev
+[[env.dev.kv_namespaces]]
+binding = "CACHE"
+id = "xxxxx-placeholder-xxxxx"
+preview_id = "xxxxx-placeholder-xxxxx"
+
+# Add staging environment
+[env.staging]
+vars = { ENVIRONMENT = "staging", LOG_LEVEL = "info", JWT_SECRET = "staging-jwt-secret-change-this-in-cloudflare-dashboard" }
+
+# D1 Database for staging
+[[env.staging.d1_databases]]
+binding = "DB"
+database_name = "gohono_staging"
+database_id = "xxxxx-placeholder-xxxxx"
+migrations_dir = "src/infrastructure/database/migrations"
+
+# KV Namespace for staging
+[[env.staging.kv_namespaces]]
+binding = "CACHE"
+id = "xxxxx-placeholder-xxxxx"
+preview_id = "xxxxx-placeholder-xxxxx"
+
+# KV Namespace for data persistence (optional)
+# [[kv_namespaces]]
+# binding = "MY_KV_NAMESPACE"
+# id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# D1 Database (optional)
+# [[d1_databases]]
+# binding = "DB"
+# database_name = "my-database"
+# database_id = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" 

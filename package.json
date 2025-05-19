@@ -1,0 +1,57 @@
+{
+  "name": "gohono-cloudflare",
+  "version": "0.1.0",
+  "description": "Hono boilerplate for Cloudflare Workers with TDD and clean architecture",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "wrangler dev src/infrastructure/worker.ts --env dev",
+    "build": "wrangler deploy --dry-run --outdir=dist",
+    "deploy": "wrangler deploy",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint --ext .ts src",
+    "lint:fix": "eslint --ext .ts src --fix",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "migrate": "wrangler d1 migrations apply DB",
+    "migrate:dev": "node src/infrastructure/database/tools/run-migrations.js dev",
+    "migrate:staging": "node src/infrastructure/database/tools/run-migrations.js staging",
+    "migrate:rollback": "node src/infrastructure/database/tools/rollback-migration.js",
+    "migrate:create": "node src/infrastructure/database/tools/create-migration.js",
+    "seed": "wrangler d1 execute DB --file=./src/infrastructure/database/seed.sql"
+  },
+  "keywords": [
+    "hono",
+    "cloudflare",
+    "workers",
+    "typescript",
+    "clean-architecture",
+    "tdd"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cookie": "^1.0.2",
+    "hono": "^4.7.2",
+    "jose": "^6.0.11",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240517.0",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cookie": "^0.6.0",
+    "@types/node": "^20.12.2",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "@vitest/coverage-v8": "^1.4.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.2",
+    "vitest": "^1.4.0",
+    "vitest-environment-miniflare": "^2.14.4",
+    "wrangler": "^3.38.0"
+  }
+}
